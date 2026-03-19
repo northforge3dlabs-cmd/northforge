@@ -1,0 +1,201 @@
+/*
+ * Google Fonts (Add this to layout/theme.liquid, NOT here):
+ * <link rel="preconnect" href="https://fonts.googleapis.com">
+ * <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+ */
+
+:root {
+  --color-background: #F5F0E8;
+  --color-foreground: #2E2318;
+  --color-primary: #2D4A3E;
+  --color-primary-hover: #213A30;
+  --color-accent: #C4922A;
+  --color-accent-hover: #A87820;
+  --color-soft: #8FAF8A;
+  --color-card-bg: #EDE8DF;
+  --color-border: #D4CEC4;
+  
+  --font-heading-family: 'Playfair Display', serif;
+  --font-body-family: 'Lato', sans-serif;
+  --font-heading-weight: 700;
+  --font-body-weight: 400;
+  
+  --border-radius-base: 6px;
+  --border-radius-button: 4px;
+}
+
+/* Global */
+body {
+  background-color: var(--color-background);
+  font-family: var(--font-body-family);
+  color: var(--color-foreground);
+}
+
+/* Typography */
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  color: var(--color-foreground);
+}
+
+p, span, div {
+  font-family: var(--font-body-family);
+  font-weight: var(--font-body-weight);
+}
+
+/* Buttons */
+.button, .btn, [type="submit"] {
+  background-color: var(--color-primary) !important;
+  color: #F5F0E8 !important;
+  border-radius: var(--border-radius-button) !important;
+  font-family: var(--font-body-family) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+  border: none !important;
+  min-height: 44px; /* Mobile responsive touch target */
+}
+
+.button:hover, .btn:hover, [type="submit"]:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+.button--accent {
+  background-color: var(--color-accent) !important;
+}
+
+.button--accent:hover {
+  background-color: var(--color-accent-hover) !important;
+}
+
+/* Product cards */
+.card, .card-wrapper {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-base);
+  transition: transform 0.2s ease;
+}
+
+.card:hover, .card-wrapper:hover {
+  transform: translateY(-2px);
+}
+
+/* Price */
+.price, .price__regular, .price__sale {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* Header */
+.header-wrapper, .header {
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Announcement bar */
+.announcement-bar {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.announcement-bar a {
+  color: var(--color-background);
+}
+
+.announcement-bar__message {
+  font-size: max(0.8rem, 1vw); /* Mobile responsive font size */
+}
+
+/* Footer */
+footer, .footer {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.footer__list-item a, .footer-block__details-content a {
+  color: var(--color-background);
+  opacity: 0.85;
+}
+
+.footer__list-item a:hover, .footer-block__details-content a:hover {
+  opacity: 1;
+  color: var(--color-background);
+}
+
+.footer-block__heading {
+  color: var(--color-background);
+  font-family: var(--font-heading-family);
+}
+
+/* Lead time notice box */
+.lead-time-notice {
+  background-color: var(--color-card-bg);
+  border-left: 3px solid var(--color-primary);
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 0.9rem;
+  color: var(--color-foreground);
+  border-radius: 0 var(--border-radius-button) var(--border-radius-button) 0;
+  display: block;
+}
+
+/* Navigation */
+.header__menu-item, .list-menu__item {
+  font-family: var(--font-body-family);
+  color: var(--color-foreground);
+}
+
+.header__menu-item:hover, .list-menu__item:hover {
+  color: var(--color-primary);
+}
+
+.header__menu-item--active, .list-menu__item--active {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* Forms and inputs */
+.field__input, .select__select, .customer .field input, .customer select {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-base);
+}
+
+.field__input:focus, .select__select:focus, .customer .field input:focus, .customer select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+/* Collection page */
+.collection-list, .grid {
+  gap: 24px;
+}
+
+.collection-hero__title {
+  font-family: var(--font-heading-family);
+}
+
+/* Mobile responsive card grid handling */
+@media screen and (max-width: 989px) {
+  .grid--2-col-tablet .grid__item {
+    width: calc(50% - 12px);
+    max-width: calc(50% - 12px);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .grid--1-col-mobile .grid__item {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Materials note */
+.product-materials-note {
+  font-size: 0.8rem;
+  color: var(--color-foreground);
+  opacity: 0.65;
+  margin-top: 12px;
+  font-style: italic;
+}
