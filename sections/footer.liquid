@@ -110,11 +110,11 @@
                         </a>
                       </div>
 
-                      {%- comment -%} Shop / Collections {%- endcomment -%}
-                      <details class="footer-sitemap__group footer-sitemap__group--collapsible">
+                      {%- comment -%} Catalogue {%- endcomment -%}
+                      <details class="footer-sitemap__group footer-sitemap__group--collapsible" open>
                         <summary class="footer-sitemap__summary">
-                          <a href="{{ routes.collections_url }}" class="footer-sitemap__top-link link link--text" onclick="event.stopPropagation()">
-                            {{- block.settings.shop_label | default: 'Shop' -}}
+                          <a href="/collections/all" class="footer-sitemap__top-link link link--text" onclick="event.stopPropagation()">
+                            Catalogue
                           </a>
                           <span class="footer-sitemap__caret" aria-hidden="true">&#9660;</span>
                         </summary>
@@ -133,7 +133,7 @@
 
                       {%- comment -%} Pages {%- endcomment -%}
                       {%- if pages.size > 0 -%}
-                        <details class="footer-sitemap__group footer-sitemap__group--collapsible">
+                        <details class="footer-sitemap__group footer-sitemap__group--collapsible" open>
                           <summary class="footer-sitemap__summary">
                             <span class="footer-sitemap__top-link">
                               {{- block.settings.pages_label | default: 'Pages' -}}
@@ -158,7 +158,7 @@
                         {%- if policy != blank -%}{%- assign has_policies = true -%}{%- endif -%}
                       {%- endfor -%}
                       {%- if has_policies -%}
-                        <details class="footer-sitemap__group footer-sitemap__group--collapsible">
+                        <details class="footer-sitemap__group footer-sitemap__group--collapsible" open>
                           <summary class="footer-sitemap__summary">
                             <span class="footer-sitemap__top-link">
                               {{- block.settings.policies_label | default: 'Policies' -}}
