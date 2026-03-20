@@ -522,11 +522,12 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
 
 .faq-item summary.faq-question {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 12px;
   padding: 18px 4px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 700 !important;
   font-size: 1rem;
   font-family: var(--font-body-family);
   color: var(--color-foreground);
@@ -539,19 +540,17 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
   display: none;
 }
 
-.faq-item summary.faq-question::after {
-  content: '+';
-  font-size: 1.5rem;
-  font-weight: 300;
-  line-height: 1;
+.faq-item summary.faq-question::before {
+  content: '▶';
+  font-size: 0.65rem;
   flex-shrink: 0;
-  margin-left: 16px;
   color: var(--color-primary);
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease;
+  display: inline-block;
 }
 
-.faq-item[open] summary.faq-question::after {
-  transform: rotate(45deg);
+.faq-item[open] summary.faq-question::before {
+  transform: rotate(90deg);
 }
 
 .faq-item summary.faq-question:hover {
