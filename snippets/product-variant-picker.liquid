@@ -154,12 +154,7 @@
           var sid = {{ section.id | json }};
           var allVariants = {{ product.variants | json }};
 
-          function formatPrice(cents) {
-            return '$' + (cents / 100).toFixed(2) + ' CAD';
-          }
-
           function getColorValue(container) {
-            // Colour can be a <select> (dropdown) or radio buttons (swatch/pill)
             var sel = container.querySelector('select[name="options[Color]"]');
             if (sel) return sel.value;
             var radio = container.querySelector('[name="options[Color]"]:checked');
@@ -176,43 +171,43 @@
             traySelects.forEach(function (sel) {
               var tray = sel.dataset.tray;
               var val = sel.value;
-
-              // Update the corresponding hidden property input
               var prop = document.getElementById('nf-prop-' + tray + '-' + sid);
               if (prop) prop.value = val;
-
               if (val.indexOf('Paint Tray') === 0) paintCount++;
             });
 
-            // Keep the hidden Paint Trays select in sync (no change event — we handle everything directly)
+            // Keep hidden Paint Trays select in sync
             var paintSel = container.querySelector('[name="options[Paint Trays]"]');
             if (paintSel) paintSel.value = String(paintCount);
 
-            // Find the matching variant for the current colour + paint count
+            // Find the matching variant
             var color = getColorValue(container);
             var variant = allVariants.find(function (v) {
               return v.option1 === color && v.option2 === String(paintCount);
             });
-
             if (!variant) return;
 
-            // Update the price display
-            var priceEl = document.querySelector('#price-' + sid + ' .price-item--regular');
-            if (priceEl) priceEl.textContent = formatPrice(variant.price);
+            // Update price display — use getElementById to avoid CSS selector escaping issues,
+            // then replace only the numeric part to preserve the theme's currency format exactly.
+            var priceBox = document.getElementById('price-' + sid);
+            var priceEl = priceBox ? priceBox.querySelector('.price__regular .price-item--regular') : null;
+            if (priceEl) {
+              priceEl.textContent = priceEl.textContent.replace(/[\d,]+\.\d{2}/, (variant.price / 100).toFixed(2));
+            }
 
-            // Update the form's hidden variant ID so the correct variant is added to cart
-            var form = document.getElementById('product-form-' + sid);
-            var idInput = form ? form.querySelector('input[name="id"]') : null;
+            // Update the variant ID submitted with the cart form.
+            // Scope via the product-form custom element's data attribute to avoid collisions.
+            var productFormEl = document.querySelector('product-form[data-section-id="' + sid + '"]');
+            var idInput = productFormEl ? productFormEl.querySelector('.product-variant-id') : null;
             if (idInput) idInput.value = variant.id;
           }
 
           function attachListeners() {
-            // Tray selection changes
             document.querySelectorAll('.nf-tray-select[data-section="' + sid + '"]').forEach(function (sel) {
               sel.addEventListener('change', syncTrays);
             });
 
-            // Re-sync when colour changes so variant ID and price stay correct
+            // Re-sync on colour change so variant ID and price stay consistent
             var container = document.getElementById('variant-selects-' + sid);
             if (container) {
               container.querySelectorAll('[name="options[Color]"]').forEach(function (el) {
