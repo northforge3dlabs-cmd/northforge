@@ -25,6 +25,17 @@
 
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 
+<style>
+  .cart__warnings .button.continue-shopping-btn,
+  .cart__warnings .button.continue-shopping-btn:hover {
+    background-color: #2D4A3E !important;
+    color: #F5F0E8 !important;
+    border-radius: 50px !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+</style>
 <cart-items class="gradient color-{{ section.settings.color_scheme }} isolate{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
   <div class="page-width">
     <div class="title-wrapper-with-link">
@@ -36,7 +47,7 @@
 
     <div class="cart__warnings">
       <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
-      <a href="{{ routes.all_products_collection_url }}" class="button" style="background-color:#2D4A3E; color:#F5F0E8; border-radius:50px; border:none; text-transform:uppercase; font-weight:700; letter-spacing:0.04em;">
+      <a href="{{ routes.all_products_collection_url }}" class="button continue-shopping-btn" style="text-transform:uppercase; font-weight:700; letter-spacing:0.04em;">
         {{ 'general.continue_shopping' | t }}
       </a>
 
