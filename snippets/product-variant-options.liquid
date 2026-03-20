@@ -80,6 +80,29 @@
       additional_props: input_dataset
     %}
   {%- elsif picker_type == 'button' -%}
+    {%- liquid
+      assign color_val = value | downcase | strip
+      case color_val
+        when 'black'
+          assign pill_bg = '#1c1c1c'
+          assign pill_color = '#ffffff'
+        when 'red'
+          assign pill_bg = '#b83225'
+          assign pill_color = '#ffffff'
+        when 'purple'
+          assign pill_bg = '#6b2d8b'
+          assign pill_color = '#ffffff'
+        when 'yellow'
+          assign pill_bg = '#e2a800'
+          assign pill_color = '#1c1c1c'
+        when 'blue'
+          assign pill_bg = '#1a6fa8'
+          assign pill_color = '#ffffff'
+        else
+          assign pill_bg = null
+          assign pill_color = null
+      endcase
+    -%}
     <input
       type="radio"
       id="{{ input_id }}"
@@ -94,7 +117,12 @@
       {% endif %}
       {{ input_dataset }}
     >
-    <label for="{{ input_id }}" data-color-value="{{ value | downcase | strip | escape }}">
+    <label
+      for="{{ input_id }}"
+      {% if pill_bg %}
+        style="background-color: {{ pill_bg }}; color: {{ pill_color }}; border-color: {{ pill_bg }};"
+      {% endif %}
+    >
       {{ value -}}
       {{ label_unavailable }}
     </label>
