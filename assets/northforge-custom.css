@@ -349,6 +349,32 @@ details.footer-sitemap__group--collapsible[open] .footer-sitemap__caret {
   }
 }
 
+/* Product media gallery */
+.product__media-list {
+  gap: 0;
+}
+
+.thumbnail-list__item .thumbnail {
+  border-radius: 6px;
+  overflow: hidden;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, outline 0.2s ease;
+  outline: 2px solid transparent;
+}
+
+.thumbnail-list__item .thumbnail:hover {
+  opacity: 1;
+}
+
+.thumbnail-list__item .thumbnail[aria-current="true"] {
+  opacity: 1;
+  outline: 2px solid var(--color-primary);
+}
+
+.thumbnail-list {
+  gap: 6px;
+}
+
 /* Materials note */
 .product-materials-note {
   font-size: 0.8rem;
