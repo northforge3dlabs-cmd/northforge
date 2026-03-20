@@ -487,6 +487,11 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
   filter: brightness(1.1) !important;
 }
 
+/* Product card title */
+.product-card-wrapper .card__heading a.full-unstyled-link {
+  font-size: 18px !important;
+}
+
 /* Featured collection section */
 .collection__title .title {
   font-family: var(--font-heading-family);
