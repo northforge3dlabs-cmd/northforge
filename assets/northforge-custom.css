@@ -462,6 +462,64 @@ details.footer-sitemap__group--collapsible[open] .footer-sitemap__caret {
   color: var(--color-accent);
 }
 
+/* Colour variant pill buttons */
+.product-form__input--pill label {
+  transition: box-shadow 0.2s ease, transform 0.15s ease !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+}
+
+.product-form__input--pill input[value="Black"] + label {
+  background-color: #1c1c1c !important;
+  color: #ffffff !important;
+  border-color: #1c1c1c !important;
+}
+.product-form__input--pill input[value="Black"]:checked + label {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1c1c1c !important;
+}
+
+.product-form__input--pill input[value="Red"] + label {
+  background-color: #b83225 !important;
+  color: #ffffff !important;
+  border-color: #b83225 !important;
+}
+.product-form__input--pill input[value="Red"]:checked + label {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #b83225 !important;
+}
+
+.product-form__input--pill input[value="Purple"] + label {
+  background-color: #6b2d8b !important;
+  color: #ffffff !important;
+  border-color: #6b2d8b !important;
+}
+.product-form__input--pill input[value="Purple"]:checked + label {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #6b2d8b !important;
+}
+
+.product-form__input--pill input[value="Yellow"] + label {
+  background-color: #e2a800 !important;
+  color: #1c1c1c !important;
+  border-color: #e2a800 !important;
+}
+.product-form__input--pill input[value="Yellow"]:checked + label {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #e2a800 !important;
+}
+
+.product-form__input--pill input[value="Blue"] + label {
+  background-color: #1a6fa8 !important;
+  color: #ffffff !important;
+  border-color: #1a6fa8 !important;
+}
+.product-form__input--pill input[value="Blue"]:checked + label {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1a6fa8 !important;
+}
+
+/* Hover lift on all colour pills */
+.product-form__input--pill label:hover {
+  transform: translateY(-1px) !important;
+  filter: brightness(1.1) !important;
+}
+
 /* Materials note */
 .product-materials-note {
   font-size: 0.8rem;
