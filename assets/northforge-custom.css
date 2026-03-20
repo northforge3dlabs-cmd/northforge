@@ -252,6 +252,103 @@ footer, .footer {
   }
 }
 
+/* Footer sitemap */
+.footer-sitemap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-sitemap__group {
+  border-bottom: 1px solid rgba(245, 240, 232, 0.12);
+}
+
+.footer-sitemap__group:last-child {
+  border-bottom: none;
+}
+
+.footer-sitemap__top-link {
+  display: block;
+  padding: 8px 0;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-background) !important;
+  opacity: 0.9;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-sitemap__top-link:hover {
+  opacity: 1;
+}
+
+.footer-sitemap__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+  padding: 2px 0;
+}
+
+.footer-sitemap__summary::-webkit-details-marker {
+  display: none;
+}
+
+.footer-sitemap__caret {
+  font-size: 0.6rem;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+  margin-left: 6px;
+  flex-shrink: 0;
+}
+
+details.footer-sitemap__group--collapsible[open] .footer-sitemap__caret {
+  transform: rotate(180deg);
+}
+
+.footer-sitemap__children {
+  padding: 4px 0 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+}
+
+.footer-sitemap__child-link {
+  font-size: 0.85rem;
+  color: var(--color-background) !important;
+  opacity: 0.7;
+  text-decoration: none;
+  padding: 4px 0;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.footer-sitemap__child-link:hover {
+  opacity: 1;
+}
+
+/* On desktop open all groups by default */
+@media screen and (min-width: 750px) {
+  details.footer-sitemap__group--collapsible {
+    open: true;
+  }
+  .footer-sitemap__caret {
+    display: none;
+  }
+  .footer-sitemap__summary {
+    cursor: default;
+    pointer-events: none;
+  }
+  /* Force open on desktop via CSS since we can't set open attr via CSS */
+  details.footer-sitemap__group--collapsible > .footer-sitemap__children {
+    display: flex !important;
+  }
+}
+
 /* Materials note */
 .product-materials-note {
   font-size: 0.8rem;

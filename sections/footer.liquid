@@ -101,6 +101,84 @@
                         {%- endfor -%}
                       </ul>
                     {%- endif -%}
+                    {%- when 'sitemap' -%}
+                    <nav class="footer-sitemap" aria-label="Site map">
+                      {%- comment -%} Home {%- endcomment -%}
+                      <div class="footer-sitemap__group">
+                        <a href="{{ routes.root_url }}" class="footer-sitemap__top-link link link--text">
+                          {{ 'general.breadcrumbs.home' | t | default: 'Home' }}
+                        </a>
+                      </div>
+
+                      {%- comment -%} Shop / Collections {%- endcomment -%}
+                      <details class="footer-sitemap__group footer-sitemap__group--collapsible">
+                        <summary class="footer-sitemap__summary">
+                          <a href="{{ routes.collections_url }}" class="footer-sitemap__top-link link link--text" onclick="event.stopPropagation()">
+                            {{- block.settings.shop_label | default: 'Shop' -}}
+                          </a>
+                          <span class="footer-sitemap__caret" aria-hidden="true">&#9660;</span>
+                        </summary>
+                        <ul class="footer-sitemap__children list-unstyled">
+                          {%- for collection in collections limit: 20 -%}
+                            {%- unless collection.handle == 'frontpage' -%}
+                              <li>
+                                <a href="{{ collection.url }}" class="footer-sitemap__child-link link link--text">
+                                  {{ collection.title | escape }}
+                                </a>
+                              </li>
+                            {%- endunless -%}
+                          {%- endfor -%}
+                        </ul>
+                      </details>
+
+                      {%- comment -%} Pages {%- endcomment -%}
+                      {%- if pages.size > 0 -%}
+                        <details class="footer-sitemap__group footer-sitemap__group--collapsible">
+                          <summary class="footer-sitemap__summary">
+                            <span class="footer-sitemap__top-link">
+                              {{- block.settings.pages_label | default: 'Pages' -}}
+                            </span>
+                            <span class="footer-sitemap__caret" aria-hidden="true">&#9660;</span>
+                          </summary>
+                          <ul class="footer-sitemap__children list-unstyled">
+                            {%- for page in pages -%}
+                              <li>
+                                <a href="{{ page.url }}" class="footer-sitemap__child-link link link--text">
+                                  {{ page.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </details>
+                      {%- endif -%}
+
+                      {%- comment -%} Policies {%- endcomment -%}
+                      {%- assign has_policies = false -%}
+                      {%- for policy in shop.policies -%}
+                        {%- if policy != blank -%}{%- assign has_policies = true -%}{%- endif -%}
+                      {%- endfor -%}
+                      {%- if has_policies -%}
+                        <details class="footer-sitemap__group footer-sitemap__group--collapsible">
+                          <summary class="footer-sitemap__summary">
+                            <span class="footer-sitemap__top-link">
+                              {{- block.settings.policies_label | default: 'Policies' -}}
+                            </span>
+                            <span class="footer-sitemap__caret" aria-hidden="true">&#9660;</span>
+                          </summary>
+                          <ul class="footer-sitemap__children list-unstyled">
+                            {%- for policy in shop.policies -%}
+                              {%- if policy != blank -%}
+                                <li>
+                                  <a href="{{ policy.url }}" class="footer-sitemap__child-link link link--text">
+                                    {{ policy.title | escape }}
+                                  </a>
+                                </li>
+                              {%- endif -%}
+                            {%- endfor -%}
+                          </ul>
+                        </details>
+                      {%- endif -%}
+                    </nav>
                   {%- when 'brand_information' -%}
                     <div class="footer-block__brand-info">
                       {%- if settings.brand_image != blank -%}
@@ -329,6 +407,37 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "sitemap",
+      "name": "Sitemap",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Site Map",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "shop_label",
+          "default": "Shop",
+          "label": "Shop label"
+        },
+        {
+          "type": "text",
+          "id": "pages_label",
+          "default": "Pages",
+          "label": "Pages label"
+        },
+        {
+          "type": "text",
+          "id": "policies_label",
+          "default": "Policies",
+          "label": "Policies label"
+        }
+      ]
     },
     {
       "type": "link_list",

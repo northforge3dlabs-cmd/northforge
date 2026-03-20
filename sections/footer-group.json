@@ -13,6 +13,20 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "sitemap": {
+          "type": "sitemap",
+          "settings": {
+            "heading": "Site Map",
+            "shop_label": "Shop",
+            "pages_label": "Pages",
+            "policies_label": "Policies"
+          }
+        }
+      },
+      "block_order": [
+        "sitemap"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": false,
