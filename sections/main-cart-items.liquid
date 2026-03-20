@@ -26,14 +26,21 @@
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 
 <style>
-  .cart__warnings .button.continue-shopping-btn,
-  .cart__warnings .button.continue-shopping-btn:hover {
+  .button.continue-shopping-btn,
+  .button.continue-shopping-btn:hover {
     background-color: #2D4A3E !important;
     color: #F5F0E8 !important;
     border-radius: 50px !important;
     border: none !important;
     box-shadow: none !important;
     outline: none !important;
+  }
+  .button.continue-shopping-btn::before,
+  .button.continue-shopping-btn::after,
+  .button.continue-shopping-btn:hover::before,
+  .button.continue-shopping-btn:hover::after {
+    box-shadow: none !important;
+    border-radius: 50px !important;
   }
 </style>
 <cart-items class="gradient color-{{ section.settings.color_scheme }} isolate{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
