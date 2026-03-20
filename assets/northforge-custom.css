@@ -487,14 +487,6 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
   filter: brightness(1.1) !important;
 }
 
-/* Product card title size — larger than price */
-.card__information .card__heading,
-.card__information .card__heading.h5 {
-  font-size: 1.15rem !important;
-  line-height: 1.35 !important;
-  margin-bottom: 0.25rem !important;
-}
-
 /* Featured collection section */
 .collection__title .title {
   font-family: var(--font-heading-family);
