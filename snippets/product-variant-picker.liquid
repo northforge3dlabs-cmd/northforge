@@ -29,7 +29,7 @@
       -%}
 
       {%- if option.name == 'Paint Trays' -%}
-        {{- /* Hidden — value driven by JS based on tray selectors below */ -}}
+        {%- comment %} Hidden — value driven by JS based on tray selectors below {%- endcomment -%}
         <div style="display:none" aria-hidden="true">
           <select
             id="Option-{{ section.id }}-{{ forloop.index0 }}"
@@ -143,7 +143,7 @@
           </div>
         {%- endfor -%}
 
-        {{- /* Hidden inputs submitted with the product form as line item properties */ -}}
+        {%- comment %} Hidden inputs submitted with the product form as line item properties {%- endcomment -%}
         <input type="hidden" name="properties[Tray 1]" id="nf-prop-1-{{ section.id }}" form="{{ product_form_id }}" value="Magnet Tray">
         <input type="hidden" name="properties[Tray 2]" id="nf-prop-2-{{ section.id }}" form="{{ product_form_id }}" value="Magnet Tray">
         <input type="hidden" name="properties[Tray 3]" id="nf-prop-3-{{ section.id }}" form="{{ product_form_id }}" value="Magnet Tray">
