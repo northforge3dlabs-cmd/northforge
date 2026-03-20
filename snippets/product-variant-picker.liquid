@@ -27,7 +27,26 @@
           endif
         endif
       -%}
-      {%- if picker_type == 'swatch' -%}
+
+      {%- if option.name == 'Paint Trays' -%}
+        {{- /* Hidden — value driven by JS based on tray selectors below */ -}}
+        <div style="display:none" aria-hidden="true">
+          <select
+            id="Option-{{ section.id }}-{{ forloop.index0 }}"
+            class="select__select"
+            name="options[{{ option.name | escape }}]"
+            form="{{ product_form_id }}"
+          >
+            {%- for value in option.values -%}
+              <option
+                value="{{ value | escape }}"
+                {% if option.selected_value == value %}selected{% endif %}
+              >{{ value | escape }}</option>
+            {%- endfor -%}
+          </select>
+        </div>
+
+      {%- elsif picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
             {{ option.name }}:
@@ -86,6 +105,95 @@
         </div>
       {%- endif -%}
     {%- endfor -%}
+
+    {%- comment %} Tray configuration — only rendered for products with a "Paint Trays" option {%- endcomment %}
+    {%- assign has_paint_trays_option = false -%}
+    {%- for option in product.options_with_values -%}
+      {%- if option.name == 'Paint Trays' -%}
+        {%- assign has_paint_trays_option = true -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if has_paint_trays_option -%}
+      <div class="nf-tray-config" id="nf-tray-config-{{ section.id }}">
+        <p class="form__label" style="margin-bottom:0.6rem;margin-top:2rem;">Tray Configuration</p>
+        <p style="font-size:1.4rem;color:#666;margin-bottom:1.4rem;line-height:1.5;">
+          Select the type for each of the 3 storage trays. Paint trays add $5 CAD each.
+        </p>
+
+        {%- for i in (1..3) -%}
+          <div class="product-form__input product-form__input--dropdown" style="margin-bottom:1rem;">
+            <label class="form__label" for="nf-tray-{{ i }}-{{ section.id }}">Tray {{ i }}</label>
+            <div class="select">
+              <select
+                id="nf-tray-{{ i }}-{{ section.id }}"
+                class="select__select nf-tray-select"
+                data-tray="{{ i }}"
+                data-section="{{ section.id }}"
+              >
+                <option value="Magnet Tray">Magnet Tray</option>
+                <option value="GW Tray">GW Tray</option>
+                <option value="Paint Tray — Vallejo / Army Painter">Paint Tray — Vallejo / Army Painter (+$5 CAD)</option>
+                <option value="Paint Tray — Citadel Paints">Paint Tray — Citadel Paints (+$5 CAD)</option>
+              </select>
+              <span class="svg-wrapper">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </div>
+          </div>
+        {%- endfor -%}
+
+        {{- /* Hidden inputs submitted with the product form as line item properties */ -}}
+        <input type="hidden" name="properties[Tray 1]" id="nf-prop-1-{{ section.id }}" form="{{ product_form_id }}" value="Magnet Tray">
+        <input type="hidden" name="properties[Tray 2]" id="nf-prop-2-{{ section.id }}" form="{{ product_form_id }}" value="Magnet Tray">
+        <input type="hidden" name="properties[Tray 3]" id="nf-prop-3-{{ section.id }}" form="{{ product_form_id }}" value="Magnet Tray">
+      </div>
+
+      <script>
+        (function () {
+          var sid = {{ section.id | json }};
+
+          function syncTrays() {
+            var container = document.getElementById('variant-selects-' + sid);
+            if (!container) return;
+
+            var traySelects = document.querySelectorAll('.nf-tray-select[data-section="' + sid + '"]');
+            var paintCount = 0;
+
+            traySelects.forEach(function (sel) {
+              var tray = sel.dataset.tray;
+              var val = sel.value;
+
+              // Update the corresponding hidden property input
+              var prop = document.getElementById('nf-prop-' + tray + '-' + sid);
+              if (prop) prop.value = val;
+
+              if (val.indexOf('Paint Tray') === 0) paintCount++;
+            });
+
+            // Drive the hidden Paint Trays select so Dawn updates the variant + price display
+            var paintSel = container.querySelector('[name="options[Paint Trays]"]');
+            if (paintSel && paintSel.value !== String(paintCount)) {
+              paintSel.value = String(paintCount);
+              paintSel.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+          }
+
+          function attachListeners() {
+            document.querySelectorAll('.nf-tray-select[data-section="' + sid + '"]').forEach(function (sel) {
+              sel.addEventListener('change', syncTrays);
+            });
+            syncTrays();
+          }
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', attachListeners);
+          } else {
+            attachListeners();
+          }
+        })();
+      </script>
+    {%- endif -%}
 
     <script type="application/json" data-selected-variant>
       {{ product.selected_or_first_available_variant | json }}
