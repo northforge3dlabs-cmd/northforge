@@ -121,7 +121,13 @@
           Select the type for each of the 3 storage trays. Paint trays add $5 CAD each.
         </p>
 
-        {%- for i in (1..3) -%}
+        {%- assign tray_count = 3 -%}
+        {%- for tag in product.tags -%}
+          {%- if tag contains 'tray-count-' -%}
+            {%- assign tray_count = tag | remove: 'tray-count-' | plus: 0 -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- for i in (1..tray_count) -%}
           <div class="product-form__input product-form__input--dropdown" style="margin-bottom:1rem;">
             <label class="form__label" for="nf-tray-{{ i }}-{{ section.id }}">Tray {{ i }}</label>
             <div class="select">
