@@ -487,6 +487,30 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
   filter: brightness(1.1) !important;
 }
 
+/* Featured collection section */
+.collection__title .title {
+  font-family: var(--font-heading-family);
+  color: var(--color-foreground);
+  margin-bottom: 0.4rem;
+}
+
+.collection__description.subtitle {
+  font-family: var(--font-body-family);
+  font-size: 1rem;
+  color: var(--color-foreground);
+  opacity: 0.72;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+.collection__title.title-wrapper {
+  padding-bottom: 1.5rem;
+}
+
 /* Materials note */
 .product-materials-note {
   font-size: 0.8rem;
