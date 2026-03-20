@@ -154,41 +154,44 @@
           var sid = {{ section.id | json }};
           var allVariants = {{ product.variants | json }};
 
-          function getColorValue(container) {
-            var sel = container.querySelector('select[name="options[Color]"]');
-            if (sel) return sel.value;
-            var radio = container.querySelector('[name="options[Color]"]:checked');
-            return radio ? radio.value : null;
+          // Find the cart-form variant ID input — Dawn keeps this updated on colour changes.
+          // It has class product-variant-id and lives inside the <product-form> element.
+          function getIdInput() {
+            return document.querySelector('product-form .product-variant-id');
           }
 
           function syncTrays() {
-            var container = document.getElementById('variant-selects-' + sid);
-            if (!container) return;
+            var idInput = getIdInput();
+            if (!idInput) return;
 
+            // Derive current colour from whichever variant Dawn has already selected.
+            var currentVariant = allVariants.find(function (v) {
+              return v.id === parseInt(idInput.value, 10);
+            });
+            var color = currentVariant ? currentVariant.option1 : null;
+            if (!color) return;
+
+            // Tally paint trays and update property inputs.
             var traySelects = document.querySelectorAll('.nf-tray-select[data-section="' + sid + '"]');
             var paintCount = 0;
-
             traySelects.forEach(function (sel) {
-              var tray = sel.dataset.tray;
-              var val = sel.value;
-              var prop = document.getElementById('nf-prop-' + tray + '-' + sid);
-              if (prop) prop.value = val;
-              if (val.indexOf('Paint Tray') === 0) paintCount++;
+              var prop = document.getElementById('nf-prop-' + sel.dataset.tray + '-' + sid);
+              if (prop) prop.value = sel.value;
+              if (sel.value.indexOf('Paint Tray') === 0) paintCount++;
             });
 
-            // Keep hidden Paint Trays select in sync
-            var paintSel = container.querySelector('[name="options[Paint Trays]"]');
+            // Keep hidden Paint Trays select in sync.
+            var container = document.getElementById('variant-selects-' + sid);
+            var paintSel = container ? container.querySelector('[name^="Paint Trays"]') : null;
             if (paintSel) paintSel.value = String(paintCount);
 
-            // Find the matching variant
-            var color = getColorValue(container);
+            // Find the target variant.
             var variant = allVariants.find(function (v) {
               return v.option1 === color && v.option2 === String(paintCount);
             });
             if (!variant) return;
 
-            // Update price display — use getElementById to avoid CSS selector escaping issues,
-            // then replace only the numeric part to preserve the theme's currency format exactly.
+            // Update price display — replace only the number to preserve the theme's currency format.
             var priceBox = document.getElementById('price-' + sid);
             var priceEl = priceBox ? priceBox.querySelector('.price__regular .price-item--regular') : null;
             if (priceEl) {
@@ -196,22 +199,22 @@
             }
 
             // Update the variant ID submitted with the cart form.
-            // Scope via the product-form custom element's data attribute to avoid collisions.
-            var productFormEl = document.querySelector('product-form[data-section-id="' + sid + '"]');
-            var idInput = productFormEl ? productFormEl.querySelector('.product-variant-id') : null;
-            if (idInput) idInput.value = variant.id;
+            idInput.value = variant.id;
           }
 
           function attachListeners() {
+            // Tray dropdowns: sync immediately on change.
             document.querySelectorAll('.nf-tray-select[data-section="' + sid + '"]').forEach(function (sel) {
               sel.addEventListener('change', syncTrays);
             });
 
-            // Re-sync on colour change so variant ID and price stay consistent
+            // Colour option changes: defer so Dawn's own handler updates idInput first,
+            // then we re-sync the paint count on top of the newly selected colour variant.
             var container = document.getElementById('variant-selects-' + sid);
             if (container) {
-              container.querySelectorAll('[name="options[Color]"]').forEach(function (el) {
-                el.addEventListener('change', syncTrays);
+              container.addEventListener('change', function (e) {
+                if (e.target.classList.contains('nf-tray-select')) return; // handled above
+                setTimeout(syncTrays, 0);
               });
             }
 
