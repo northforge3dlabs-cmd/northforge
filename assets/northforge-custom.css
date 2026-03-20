@@ -71,15 +71,72 @@ p, span, div {
 }
 
 /* Product cards */
-.card, .card-wrapper {
-  background-color: var(--color-card-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-base);
-  transition: transform 0.2s ease;
+.product-card-wrapper {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 10px rgba(46, 35, 24, 0.08) !important;
+  transition: box-shadow 0.35s ease, transform 0.35s ease !important;
+  border: none !important;
 }
 
-.card:hover, .card-wrapper:hover {
-  transform: translateY(-2px);
+.product-card-wrapper:hover {
+  box-shadow: 0 10px 32px rgba(46, 35, 24, 0.17) !important;
+  transform: translateY(-5px) !important;
+}
+
+/* Image zoom on hover */
+.product-card-wrapper .media.media--hover-effect > img:only-child,
+.product-card-wrapper .media.media--hover-effect > img:first-child {
+  transition: transform 0.5s ease !important;
+}
+
+.product-card-wrapper:hover .media.media--hover-effect > img:only-child,
+.product-card-wrapper:hover .media.media--hover-effect > img:first-child:only-child {
+  transform: scale(1.07) !important;
+}
+
+/* Subtle image overlay on hover */
+.product-card-wrapper .card__inner {
+  position: relative;
+}
+
+.product-card-wrapper .card__inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(46, 35, 24, 0);
+  transition: background 0.35s ease;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.product-card-wrapper:hover .card__inner::after {
+  background: rgba(46, 35, 24, 0.06);
+}
+
+/* Card content area */
+.product-card-wrapper .card__content {
+  padding: 14px 16px 16px;
+}
+
+/* Title hover color */
+.product-card-wrapper .card__heading a.full-unstyled-link {
+  transition: color 0.2s ease;
+}
+
+.product-card-wrapper:hover .card__heading a.full-unstyled-link {
+  color: var(--color-primary);
+}
+
+/* Badge polish */
+.badge {
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  border-radius: 3px !important;
+  padding: 3px 8px !important;
 }
 
 /* Price */
@@ -169,7 +226,11 @@ footer, .footer {
 
 /* Collection page */
 .collection-list, .grid {
-  gap: 24px;
+  gap: 20px;
+}
+
+.product-grid {
+  row-gap: 28px;
 }
 
 .collection-hero__title {
