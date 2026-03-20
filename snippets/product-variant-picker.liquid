@@ -152,6 +152,19 @@
       <script>
         (function () {
           var sid = {{ section.id | json }};
+          var allVariants = {{ product.variants | json }};
+
+          function formatPrice(cents) {
+            return '$' + (cents / 100).toFixed(2) + ' CAD';
+          }
+
+          function getColorValue(container) {
+            // Colour can be a <select> (dropdown) or radio buttons (swatch/pill)
+            var sel = container.querySelector('select[name="options[Color]"]');
+            if (sel) return sel.value;
+            var radio = container.querySelector('[name="options[Color]"]:checked');
+            return radio ? radio.value : null;
+          }
 
           function syncTrays() {
             var container = document.getElementById('variant-selects-' + sid);
@@ -171,18 +184,42 @@
               if (val.indexOf('Paint Tray') === 0) paintCount++;
             });
 
-            // Drive the hidden Paint Trays select so Dawn updates the variant + price display
+            // Keep the hidden Paint Trays select in sync (no change event — we handle everything directly)
             var paintSel = container.querySelector('[name="options[Paint Trays]"]');
-            if (paintSel && paintSel.value !== String(paintCount)) {
-              paintSel.value = String(paintCount);
-              paintSel.dispatchEvent(new Event('change', { bubbles: true }));
-            }
+            if (paintSel) paintSel.value = String(paintCount);
+
+            // Find the matching variant for the current colour + paint count
+            var color = getColorValue(container);
+            var variant = allVariants.find(function (v) {
+              return v.option1 === color && v.option2 === String(paintCount);
+            });
+
+            if (!variant) return;
+
+            // Update the price display
+            var priceEl = document.querySelector('#price-' + sid + ' .price-item--regular');
+            if (priceEl) priceEl.textContent = formatPrice(variant.price);
+
+            // Update the form's hidden variant ID so the correct variant is added to cart
+            var form = document.getElementById('product-form-' + sid);
+            var idInput = form ? form.querySelector('input[name="id"]') : null;
+            if (idInput) idInput.value = variant.id;
           }
 
           function attachListeners() {
+            // Tray selection changes
             document.querySelectorAll('.nf-tray-select[data-section="' + sid + '"]').forEach(function (sel) {
               sel.addEventListener('change', syncTrays);
             });
+
+            // Re-sync when colour changes so variant ID and price stay correct
+            var container = document.getElementById('variant-selects-' + sid);
+            if (container) {
+              container.querySelectorAll('[name="options[Color]"]').forEach(function (el) {
+                el.addEventListener('change', syncTrays);
+              });
+            }
+
             syncTrays();
           }
 
