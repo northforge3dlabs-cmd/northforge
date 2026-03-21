@@ -221,7 +221,7 @@ All payment processor payouts route to Wise CAD account.
 
 ---
 
-## Work Completed (as of March 21, 2026, updated)
+## Work Completed (as of March 21, 2026, session 2)
 
 ### Infrastructure
 - Shopify store live at northforge-labs.myshopify.com
@@ -263,6 +263,17 @@ All payment processor payouts route to Wise CAD account.
 - Colour variant buttons styled with actual colour swatches
   (via `data-color-value` attribute and inline styles in
   `northforge-custom.css`)
+- Colour button selected state: black 3px outline ring on the
+  active button, managed via JS `data-nf-selected` attribute +
+  CSS `!important` override (needed because inline styles on
+  labels block CSS `:checked` selectors)
+- Tray configuration system fully functional: per-tray dropdowns
+  outside `variant-selects`, price updates on tray selection,
+  correct variant ID written to cart form on both colour and
+  tray changes
+- Fixed variant availability: all Paint Trays variants set to
+  `inventory_management: null, inventory_policy: continue`
+  via `fix-all-variant-inventory.js`
 
 ### Cart Page
 - "Continue shopping" button styled as green pill shape
@@ -330,6 +341,7 @@ All payment processor payouts route to Wise CAD account.
 | `fix-skirmish-colors.js` | Restored Purple + Black to Skirmish Bundle |
 | `fix-battle-variants.js` | Battle Bundle tray/variant setup + tags both bundles |
 | `fix-battle-price.js` | Sets Battle Bundle base price to $125 CAD |
+| `fix-all-variant-inventory.js` | Sets all Paint Trays product variants to inventory_management: null, inventory_policy: continue (fixes availability) |
 
 ---
 
