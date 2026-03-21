@@ -43,6 +43,17 @@
   body .product-card-wrapper .card__heading a.full-unstyled-link {
     font-size: 22px !important;
   }
+
+  @media screen and (min-width: 990px) {
+    .card-wrapper:hover .media.media--hover-effect > img:first-child:not(:only-child) {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .card-wrapper:hover .media.media--hover-effect > img + img {
+      opacity: 1 !important;
+      transition: opacity 0.4s ease;
+    }
+  }
 </style>
 
 
