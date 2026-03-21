@@ -221,7 +221,7 @@ All payment processor payouts route to Wise CAD account.
 
 ---
 
-## Work Completed (as of March 20, 2026, updated)
+## Work Completed (as of March 21, 2026, updated)
 
 ### Infrastructure
 - Shopify store live at northforge-labs.myshopify.com
@@ -283,6 +283,8 @@ All payment processor payouts route to Wise CAD account.
 - Answer text: `1.8rem`, line-height 1.75
 - Footer note: `1.6rem`
 - Borders between items using `rgba(18,18,18,0.12)`
+- Centered green pill "Contact Us" button below the footer note
+  (matches About page button style — links to `/pages/contact`)
 
 ### About Page
 - Green pill-shaped CTA button
