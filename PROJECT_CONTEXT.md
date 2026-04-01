@@ -16,8 +16,8 @@ at **northforge-labs.myshopify.com**.
 |---|---|
 | Platform | Shopify (Dawn theme, heavily customized) |
 | Theme repo | GitHub: `northforge3dlabs-cmd/northforge` (branch: `main`) |
-| Admin scripts | `C:\Users\clock\OneDrive\Desktop\northforge-upload\` (Node.js scripts using Shopify Admin REST API) |
-| Local theme path | `C:\Users\clock\OneDrive\Desktop\northforge\` |
+| Admin scripts | `D:\OneDrive\Desktop\northforge-upload\` (Node.js scripts using Shopify Admin REST API) |
+| Local theme path | `D:\OneDrive\Desktop\northforge\` |
 | Custom CSS | `assets/northforge-custom.css` |
 
 ---
@@ -47,7 +47,7 @@ Page content is managed via Node.js scripts in the
 Run from terminal:
 
 ```bash
-cd "C:\Users\clock\OneDrive\Desktop\northforge-upload"
+cd "D:\OneDrive\Desktop\northforge-upload"
 node fix-faq-accordion.js    # updates FAQ page
 node fix-about-page.js       # updates About page
 # etc.
@@ -221,7 +221,7 @@ All payment processor payouts route to Wise CAD account.
 
 ---
 
-## Work Completed (as of March 21, 2026, session 2)
+## Work Completed (as of April 1, 2026, session 3)
 
 ### Infrastructure
 - Shopify store live at northforge-labs.myshopify.com
@@ -306,6 +306,19 @@ All payment processor payouts route to Wise CAD account.
 
 ---
 
+### Session 3 (April 1, 2026) — New PC Setup & Variant Image Swapping
+
+- Migrated project to main office PC (files already synced via OneDrive to `D:\OneDrive\Desktop\`)
+- Installed Node.js and Shopify CLI on new PC
+- Authenticated Shopify CLI and confirmed full theme push works
+- Updated all local paths in PROJECT_CONTEXT.md from `C:\Users\clock\...` to `D:\OneDrive\...`
+- Fixed `upload-hero-banner.js` path and section ID; set hero banner on home page via theme editor
+- Created `assign-variant-images.js`: uploads per-colour hero/front/open images for Skirmish and
+  Battle bundles and assigns them to matching colour variants — clicking a colour swatch now
+  automatically swaps the gallery to that colour's images (Dawn native featured_media behaviour)
+
+---
+
 ## In Progress / Pending
 
 - Product photography reshoot (lightbox arriving — reshoot
@@ -342,6 +355,8 @@ All payment processor payouts route to Wise CAD account.
 | `fix-battle-variants.js` | Battle Bundle tray/variant setup + tags both bundles |
 | `fix-battle-price.js` | Sets Battle Bundle base price to $125 CAD |
 | `fix-all-variant-inventory.js` | Sets all Paint Trays product variants to inventory_management: null, inventory_policy: continue (fixes availability) |
+| `assign-variant-images.js` | Uploads per-colour hero/front/open images for Skirmish and Battle bundles and assigns them to colour variants (enables gallery image swapping on colour selection) |
+| `upload-hero-banner.js` | Uploads hero-banner-v4.jpg and sets it as the home page Image Banner |
 
 ---
 
