@@ -26,10 +26,11 @@
   endif
 -%}
 {%- if og_image -%}
-  <meta property="og:image" content="https:{{ og_image | image_url: width: 1200 }}">
-  <meta property="og:image:secure_url" content="https:{{ og_image | image_url: width: 1200 }}">
-  <meta property="og:image:width" content="{{ og_image.width | at_most: 1200 }}">
-  <meta property="og:image:height" content="{{ og_image.height | at_most: 630 }}">
+  <meta property="og:image" content="https:{{ og_image | image_url: width: 1200, height: 630, crop: 'center' }}">
+  <meta property="og:image:secure_url" content="https:{{ og_image | image_url: width: 1200, height: 630, crop: 'center' }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
 {%- endif -%}
 
 {%- if request.page_type == 'product' -%}
