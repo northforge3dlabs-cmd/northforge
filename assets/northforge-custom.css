@@ -128,7 +128,7 @@ p {
 }
 
 .product-card-wrapper:hover .card__heading a.full-unstyled-link {
-  color: var(--color-primary);
+  color: var(--color-accent);
 }
 
 /* Badge polish */
@@ -1099,4 +1099,57 @@ body.template-product .product-form__submit {
 .utility-bar.gradient,
 .announcement-bar-section {
   background-attachment: scroll !important;
+}
+
+/* ─── Product page — shipping link readable on dark background ──────────────
+   .product__tax inherits color-scheme-1 foreground (rgb 18,18,18) — near-black. */
+body.template-product .product__tax a,
+body.template-product .product__policies a {
+  color: rgba(245, 240, 232, 0.7) !important;
+  text-decoration: underline;
+}
+
+body.template-product .product__tax a:hover,
+body.template-product .product__policies a:hover {
+  color: #F5F0E8 !important;
+}
+
+/* ─── Product page — variant pill selected ring ─────────────────────────────
+   Labels use data-nf-selected (not data-color-value), so per-colour rules
+   never fired. Generic rule: off-white inner ring + gold outer ring. */
+body.template-product .product-form__input input:checked + label {
+  box-shadow: 0 0 0 2px #F5F0E8, 0 0 0 4px var(--color-accent) !important;
+}
+
+/* ─── Product page — tray / variant select dropdowns ────────────────────────
+   .select__select inherits color-scheme-1 foreground: rgba(18,18,18,0.75).
+   Text is near-invisible on the dark #242833 background. */
+body.template-product .select__select,
+body.template-product select {
+  color: #F5F0E8 !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+body.template-product .select__select option {
+  background-color: #242833;
+  color: #F5F0E8;
+}
+
+/* ─── Product page — quantity box: text and border readable on dark bg ───────
+   quantity-input inherits color-scheme-1 foreground (rgb 18,18,18).
+   The box outline is drawn by quantity-input::after box-shadow with the same
+   dark colour. Override text on input + buttons, and swap the shadow to light. */
+body.template-product quantity-input input,
+body.template-product .quantity__input {
+  color: #F5F0E8 !important;
+}
+
+body.template-product quantity-input button,
+body.template-product .quantity__button {
+  color: #F5F0E8 !important;
+}
+
+body.template-product quantity-input::after {
+  box-shadow: rgba(245, 240, 232, 0.35) 0px 0px 0px 1px !important;
 }
