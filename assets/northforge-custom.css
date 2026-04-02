@@ -167,7 +167,15 @@ sticky-header .header-wrapper {
 }
 
 /* Announcement bar — dark charcoal, seamless with header */
-.utility-bar {
+.utility-bar,
+.utility-bar.gradient {
+  background-color: #1A1F2A !important;
+  background-image: none !important;
+  background-attachment: scroll !important;
+}
+
+/* Announcement bar section wrapper — covers any colour-scheme applied to the outer div */
+.announcement-bar-section {
   background-color: #1A1F2A !important;
   background-image: none !important;
 }
@@ -932,4 +940,36 @@ body.template-page .rte a[style*="background-color"] {
 
 body.template-page .rte a[style*="background-color"]:hover {
     background-color: #A87820 !important;
+}
+
+/* ─── Contact / page template — lozenge Send button ─── */
+body.template-page [type="submit"] {
+  border-radius: 50px !important;
+  font-size: 1rem !important;
+  padding: 1rem 2.5rem !important;
+}
+
+/* ─── Product page — "You may also like" dark background override ─── */
+/* colour-scheme-1 (off-white) and colour-scheme-2 (warm-grey) must stay dark on product pages */
+body.template-product .color-scheme-1,
+body.template-product .color-scheme-2 {
+  background-color: #242833 !important;
+  background-image: linear-gradient(#242833, #242833) !important;
+  color: #F5F0E8 !important;
+}
+
+body.template-product .color-scheme-1 h2,
+body.template-product .color-scheme-1 h3,
+body.template-product .color-scheme-2 h2,
+body.template-product .color-scheme-2 h3 {
+  color: #F5F0E8 !important;
+}
+
+body.template-product .color-scheme-1 .card__heading a,
+body.template-product .color-scheme-2 .card__heading a,
+body.template-product .color-scheme-1 .price,
+body.template-product .color-scheme-2 .price,
+body.template-product .color-scheme-1 .price__regular,
+body.template-product .color-scheme-2 .price__regular {
+  color: #F5F0E8 !important;
 }

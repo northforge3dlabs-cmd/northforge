@@ -110,11 +110,11 @@
                         </a>
                       </div>
 
-                      {%- comment -%} Catalogue {%- endcomment -%}
+                      {%- comment -%} Shop {%- endcomment -%}
                       <details class="footer-sitemap__group footer-sitemap__group--collapsible" open>
                         <summary class="footer-sitemap__summary">
                           <a href="/collections/all" class="footer-sitemap__top-link link link--text" onclick="event.stopPropagation()">
-                            Catalogue
+                            {{ block.settings.shop_label | default: 'Shop' }}
                           </a>
                         </summary>
                         <ul class="footer-sitemap__children list-unstyled">
