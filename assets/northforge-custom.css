@@ -1058,12 +1058,16 @@ body .shopify-section.announcement-bar-section {
 }
 
 /* ─── Announcement bar banding fix ─────────────────────────────────────────
-   On product pages, body.template-product .page-width forces #242833 on ALL
-   .page-width elements — including the one inside the utility-bar. This creates
-   a visible band (352px each side) lighter than the surrounding #1A1F2A.
-   Specificity: (0,3,1) beats (0,2,1) so this wins without !important tricks. */
+   body.template-* .page-width forces #242833 on ALL .page-width elements —
+   including the one inside the utility-bar. This creates visible bands either
+   side of the bar text. Transparent override here beats (0,2,1) on all dark
+   templates: product, page (Contact/About/FAQ), and collection. */
 body.template-product .utility-bar .page-width,
-body.template-product .announcement-bar-section .page-width {
+body.template-product .announcement-bar-section .page-width,
+body.template-page .utility-bar .page-width,
+body.template-page .announcement-bar-section .page-width,
+body.template-collection .utility-bar .page-width,
+body.template-collection .announcement-bar-section .page-width {
   background-color: transparent !important;
   background-image: none !important;
 }
