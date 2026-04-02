@@ -257,6 +257,49 @@ footer, .footer,
   box-shadow: 0 0 0 1px var(--color-primary);
 }
 
+/* ─── Dark background pages: Shop, Contact, About, FAQ ─── */
+
+/* Body background for all page and collection templates */
+body.template-collection,
+body.template-page {
+  background-color: #242833 !important;
+}
+
+/* Page title and body copy on dark background (main-page section has no color_scheme) */
+body.template-page .main-page-title,
+body.template-page .page-title {
+  color: #F5F0E8 !important;
+  font-family: var(--font-display-family);
+}
+
+body.template-page .rte,
+body.template-page .rte p,
+body.template-page .rte li,
+body.template-page .rte strong {
+  color: #F5F0E8 !important;
+}
+
+body.template-page .rte h1,
+body.template-page .rte h2,
+body.template-page .rte h3,
+body.template-page .rte h4 {
+  color: var(--color-accent) !important;
+}
+
+body.template-page .rte a {
+  color: var(--color-accent);
+}
+
+body.template-page .rte a:hover {
+  color: #F5F0E8;
+}
+
+/* Wrap the main-page section in dark charcoal */
+body.template-page .section,
+body.template-contact .section {
+  background-color: #242833;
+}
+
 /* Collection page */
 .collection-list, .grid {
   gap: 20px;
