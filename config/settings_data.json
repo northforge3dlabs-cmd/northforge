@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/northforge_logo_horizontal_bw.png",
+    "logo": "shopify://shop_images/northforge_hor_alt_bw.png",
     "logo_width": 240,
     "favicon": "shopify://shop_images/northforge_favicon_bw.png",
     "type_header_font": "assistant_n4",
@@ -146,7 +146,7 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#F5F0E8",
+          "background": "#f5f0e8",
           "background_gradient": "",
           "text": "#121212",
           "button": "#121212",
@@ -157,7 +157,7 @@
       },
       "scheme-2": {
         "settings": {
-          "background": "#EDE8DF",
+          "background": "#ede8df",
           "background_gradient": "",
           "text": "#121212",
           "button": "#121212",
@@ -190,13 +190,13 @@
       },
       "scheme-5": {
         "settings": {
-          "background": "#C4922A",
+          "background": "#c4922a",
           "background_gradient": "",
-          "text": "#1A0F00",
-          "button": "#1A0F00",
-          "button_label": "#F5F0E8",
-          "secondary_button_label": "#1A0F00",
-          "shadow": "#1A0F00"
+          "text": "#1a0f00",
+          "button": "#1a0f00",
+          "button_label": "#f5f0e8",
+          "secondary_button_label": "#1a0f00",
+          "shadow": "#1a0f00"
         }
       }
     }
