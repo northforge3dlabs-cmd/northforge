@@ -147,24 +147,24 @@ p {
   font-weight: 700;
 }
 
-/* Header — always solid, never transparent over hero */
+/* Header — dark charcoal, always solid, never transparent over hero */
 .header-wrapper,
 .header-wrapper.header-wrapper--border-bottom,
 .shopify-section-header-sticky .header-wrapper,
 sticky-header .header-wrapper {
-  background-color: #F5F0E8 !important;
-  background-image: linear-gradient(#F5F0E8, #F5F0E8) !important;
-  border-bottom: 1px solid var(--color-border) !important;
+  background-color: #242833 !important;
+  background-image: linear-gradient(#242833, #242833) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Announcement bar — target the outer utility-bar for full-width coverage */
+/* Announcement bar — dark charcoal, seamless with header */
 .utility-bar {
-  background-color: var(--color-primary) !important;
+  background-color: #1A1F2A !important;
   background-image: none !important;
 }
 
 .announcement-bar {
-  background-color: var(--color-primary);
+  background-color: #1A1F2A;
   color: #F5F0E8;
 }
 
@@ -227,15 +227,15 @@ footer, .footer,
 /* Navigation */
 .header__menu-item, .list-menu__item {
   font-family: var(--font-body-family);
-  color: var(--color-foreground);
+  color: #F5F0E8 !important;
 }
 
 .header__menu-item:hover, .list-menu__item:hover {
-  color: var(--color-primary);
+  color: var(--color-accent) !important;
 }
 
 .header__menu-item--active, .list-menu__item--active {
-  color: var(--color-primary);
+  color: var(--color-accent) !important;
   font-weight: 700;
 }
 
@@ -666,8 +666,10 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
 
 /* ─── Value proposition strip ─── */
 .nf-value-props {
-  background-color: var(--color-primary);
+  background-color: #242833;
   padding: 64px 0;
+  border-top: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
 }
 
 .nf-value-props__inner {
@@ -710,7 +712,7 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
   font-family: var(--font-display-family);
   font-size: 1.6rem;
   font-weight: 700;
-  color: #F5F0E8;
+  color: var(--color-accent);
   margin: 0 0 10px 0;
   letter-spacing: 0.06em;
   text-transform: uppercase;
