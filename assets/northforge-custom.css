@@ -1020,10 +1020,10 @@ body.template-product .share-button__copy-link input {
 }
 
 /* ─── Announcement bar section wrapper — specificity fix ───────────────────
-   body.template-product .shopify-section has (0,2,0) + !important and appears
-   later than our single-class .announcement-bar-section rule, so it wins.
-   This rule matches by chaining two classes (0,2,0) and sits at end of file. */
-.shopify-section.announcement-bar-section {
+   body.template-product .shopify-section is (0,2,1): body element + 2 classes.
+   Our previous rule (.shopify-section.announcement-bar-section = 0,2,0) lost.
+   Adding 'body' raises us to (0,2,1) and sitting at end of file resolves ties. */
+body .shopify-section.announcement-bar-section {
   background-color: #1A1F2A !important;
   background-image: none !important;
 }
