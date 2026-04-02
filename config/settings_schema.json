@@ -1304,6 +1304,12 @@
     "name": "t:settings_schema.social-media.name",
     "settings": [
       {
+        "type": "image_picker",
+        "id": "social_sharing_image",
+        "label": "Social sharing image",
+        "info": "Shown when sharing the store link on social media and chat apps. Recommended: 1200×630px."
+      },
+      {
         "type": "text",
         "id": "social_facebook_link",
         "label": "t:settings_schema.social-media.settings.social_facebook_link.label",
