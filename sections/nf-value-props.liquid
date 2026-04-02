@@ -1,0 +1,33 @@
+{{ 'northforge-custom.css' | asset_url | stylesheet_tag }}
+
+<section class="nf-value-props" aria-label="Why Northforge Labs">
+  <div class="nf-value-props__inner">
+
+    <div class="nf-value-props__item">
+      <div class="nf-value-props__icon">🖨️</div>
+      <p class="nf-value-props__title">Printed to Order</p>
+      <p class="nf-value-props__desc">Every case is made fresh.<br>Ready in 3–5 business days.</p>
+    </div>
+
+    <div class="nf-value-props__item">
+      <div class="nf-value-props__icon">🎨</div>
+      <p class="nf-value-props__title">Choose Your Colour</p>
+      <p class="nf-value-props__desc">5 accent options — Red, Blue,<br>Yellow, Purple, or Black.</p>
+    </div>
+
+    <div class="nf-value-props__item">
+      <div class="nf-value-props__icon">📦</div>
+      <p class="nf-value-props__title">Ships Worldwide</p>
+      <p class="nf-value-props__desc">Flat-rate shipping available.<br>Tracked from workshop to door.</p>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Value Props Strip",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

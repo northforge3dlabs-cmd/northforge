@@ -37,15 +37,19 @@
         "show_text_below": false
       }
     },
+    "nf-value-props": {
+      "type": "nf-value-props",
+      "settings": {}
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
         "collection": "all",
         "products_to_show": 8,
-        "title": "Featured products",
+        "title": "Battle-Ready Storage",
         "heading_size": "h1",
         "description": "<p>Precision-printed miniature storage, built to order. Every piece ships fresh from our workshop.</p>",
-        "show_description": false,
+        "show_description": true,
         "description_style": "subtitle",
         "columns_desktop": 3,
         "enable_desktop_slider": false,
@@ -68,6 +72,7 @@
   },
   "order": [
     "image_banner",
+    "nf-value-props",
     "featured_collection"
   ]
 }
