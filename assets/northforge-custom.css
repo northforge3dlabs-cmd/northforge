@@ -1067,9 +1067,11 @@ body.template-product .announcement-bar-section .page-width {
   background-image: none !important;
 }
 
-/* ─── Product page — Add to Cart button: larger, more prominent text ─── */
+/* ─── Product page — Add to Cart button: larger, more prominent text ───────
+   Root font-size is 10px in this theme, so rem values are × 10.
+   1.6rem = 16px (matches body text), 1.8rem = 18px (matches price/nav).     */
 body.template-product .product-form__submit {
-  font-size: 1.1rem !important;
+  font-size: 1.6rem !important;
   letter-spacing: 0.06em !important;
-  min-height: 52px !important;
+  min-height: 54px !important;
 }
