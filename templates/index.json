@@ -15,7 +15,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Your Army, Organized.",
+            "heading": "Your Army,  Organized.",
             "heading_size": "h1"
           }
         }
@@ -29,7 +29,7 @@
         "image_height": "large",
         "image_behavior": "none",
         "desktop_content_position": "middle-right",
-        "desktop_content_alignment": "left",
+        "desktop_content_alignment": "right",
         "show_text_box": false,
         "color_scheme": "scheme-3",
         "stack_images_on_mobile": false,
