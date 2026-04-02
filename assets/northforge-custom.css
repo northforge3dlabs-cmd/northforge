@@ -977,6 +977,8 @@ body.template-page [type="submit"] {
   border-radius: 50px !important;
   font-size: 1.6rem !important;
   padding: 1rem 2.5rem !important;
+  border: none !important;
+  outline: none !important;
 }
 
 /* ─── Product page — "You may also like" dark background override ─── */
