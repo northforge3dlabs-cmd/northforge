@@ -15,6 +15,7 @@
   --color-card-bg: #EDE8DF;
   --color-border: #D4CEC4;
   
+  --font-display-family: 'Cinzel', serif;
   --font-heading-family: 'Playfair Display', serif;
   --font-body-family: 'Lato', sans-serif;
   --font-heading-weight: 700;
@@ -490,7 +491,8 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
 
 /* Featured collection section */
 .collection__title .title {
-  font-family: var(--font-heading-family);
+  font-family: var(--font-display-family);
+  letter-spacing: 0.04em;
   color: var(--color-foreground);
   margin-bottom: 0.4rem;
 }
@@ -599,6 +601,8 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
 .banner__heading .h0,
 .banner__heading .h1,
 .image-banner .banner__heading {
+  font-family: var(--font-display-family) !important;
+  letter-spacing: 0.06em;
   color: #F5F0E8 !important;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.45);
 }
@@ -669,12 +673,13 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
 }
 
 .nf-value-props__title {
-  font-family: var(--font-heading-family);
-  font-size: 0.95rem;
+  font-family: var(--font-display-family);
+  font-size: 0.78rem;
   font-weight: 700;
   color: #F5F0E8;
   margin: 0 0 4px 0;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .nf-value-props__desc {
