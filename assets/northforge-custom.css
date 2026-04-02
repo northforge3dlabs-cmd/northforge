@@ -150,7 +150,9 @@ p {
 /* Logo — blend mode removes black background from non-transparent PNG */
 .header__heading img,
 .header__heading-logo,
-.header__logo img {
+img.header__heading-logo,
+.header__logo img,
+.header__heading .header__heading-logo {
   mix-blend-mode: screen !important;
 }
 
@@ -308,6 +310,32 @@ body.template-page .rte a:hover {
   color: #F5F0E8;
 }
 
+/* Headings on dark page templates */
+body.template-page h1,
+body.template-page h2,
+body.template-page h3,
+body.template-page h4,
+body.template-page h5,
+body.template-page h6,
+body.template-page .h1,
+body.template-page .h2,
+body.template-page .h3 {
+  color: #F5F0E8 !important;
+}
+
+/* Contact form inputs readable on dark background */
+body.template-page .field__input,
+body.template-page .field__label,
+body.template-page textarea.field__input {
+  color: #F5F0E8 !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+body.template-page .field__label {
+  background-color: transparent !important;
+}
+
 /* Lozenge / pill buttons inside page content */
 body.template-page .button,
 body.template-page .btn,
@@ -442,6 +470,7 @@ details.footer-sitemap__group--collapsible[open] .footer-sitemap__caret {
     cursor: default;
     pointer-events: none;
   }
+  /* Re-enable clicks on anchor links inside the summary (e.g. Catalogue link) */
   .footer-sitemap__summary a {
     pointer-events: auto !important;
     cursor: pointer !important;
