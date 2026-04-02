@@ -15,7 +15,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "",
+            "heading": "Your Army, Organized.",
             "heading_size": "h0"
           }
         }
@@ -24,8 +24,8 @@
         "heading"
       ],
       "settings": {
-        "image": "shopify://shop_images/war-ganizer_hero.png",
-        "image_overlay_opacity": 40,
+        "image": "shopify://shop_images/war-ganizer-hero.jpg",
+        "image_overlay_opacity": 20,
         "image_height": "large",
         "image_behavior": "none",
         "desktop_content_position": "bottom-center",
