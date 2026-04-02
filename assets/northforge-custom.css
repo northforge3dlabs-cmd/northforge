@@ -38,7 +38,8 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
   color: var(--color-foreground);
 }
 
-p, span, div {
+/* Body copy only — avoid touching Shopify component divs */
+p {
   font-family: var(--font-body-family);
   font-weight: var(--font-body-weight);
 }
