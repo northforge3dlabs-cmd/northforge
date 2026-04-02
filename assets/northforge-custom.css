@@ -981,6 +981,14 @@ body.template-page [type="submit"] {
   outline: none !important;
 }
 
+/* Dawn's .button::after renders a fake border via box-shadow using
+   --color-button-text (white) at full opacity — creates a visible white ring.
+   Null it out so only the gold pill is shown. */
+body.template-page [type="submit"]::after,
+body.template-page .button::after {
+  box-shadow: none !important;
+}
+
 /* ─── Product page — "You may also like" dark background override ─── */
 /* colour-scheme-1 (off-white) and colour-scheme-2 (warm-grey) must stay dark on product pages.
    Also override the --gradient-background CSS variable so Dawn's .gradient class
