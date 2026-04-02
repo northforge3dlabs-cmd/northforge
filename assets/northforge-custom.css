@@ -263,7 +263,8 @@ footer, .footer,
 
 /* Body background for all page and collection templates */
 body.template-collection,
-body.template-page {
+body.template-page,
+body.template-product {
   background-color: #242833 !important;
 }
 
@@ -272,8 +273,40 @@ body.template-page .section,
 body.template-page section,
 body.template-page .shopify-section,
 body.template-page .page-width,
-body.template-page .page-width--narrow {
+body.template-page .page-width--narrow,
+body.template-product .section,
+body.template-product section,
+body.template-product .shopify-section,
+body.template-product .page-width {
   background-color: #242833 !important;
+  color: #F5F0E8 !important;
+}
+
+/* Product page — headings, prices and labels readable on dark background */
+body.template-product h1,
+body.template-product h2,
+body.template-product h3,
+body.template-product h4,
+body.template-product .h1,
+body.template-product .h2,
+body.template-product .h3,
+body.template-product .h4,
+body.template-product .product__title {
+  color: #F5F0E8 !important;
+}
+
+body.template-product .price,
+body.template-product .price__regular,
+body.template-product .price__sale,
+body.template-product .product__description,
+body.template-product .rte,
+body.template-product .rte p,
+body.template-product .rte li {
+  color: #F5F0E8 !important;
+}
+
+body.template-product .product-form__input label,
+body.template-product .variant-input-wrap label {
   color: #F5F0E8 !important;
 }
 
@@ -682,8 +715,14 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
   display: none;
 }
 
-.faq-item summary.faq-question::before {
+/* Suppress the browser's native <summary> disclosure triangle in all engines */
+.faq-item summary.faq-question::marker {
+  display: none;
   content: '';
+}
+
+.faq-item summary.faq-question::before {
+  content: '' !important;
   width: 7px;
   height: 7px;
   border-right: 2px solid var(--color-primary);
