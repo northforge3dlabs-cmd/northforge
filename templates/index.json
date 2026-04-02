@@ -24,7 +24,7 @@
         "heading"
       ],
       "settings": {
-        "image": "shopify://shop_images/war-ganizer-hero.jpg",
+        "image": "shopify://shop_images/war-ganizer_hero.png",
         "image_overlay_opacity": 20,
         "image_height": "large",
         "image_behavior": "none",
