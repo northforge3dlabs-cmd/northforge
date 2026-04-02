@@ -667,7 +667,7 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
 /* ─── Value proposition strip ─── */
 .nf-value-props {
   background-color: var(--color-primary);
-  padding: 56px 0;
+  padding: 64px 0;
 }
 
 .nf-value-props__inner {
@@ -701,25 +701,25 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
 }
 
 .nf-value-props__icon {
-  font-size: 3.4rem;
-  margin-bottom: 16px;
+  font-size: 4.4rem;
+  margin-bottom: 20px;
   line-height: 1;
 }
 
 .nf-value-props__title {
   font-family: var(--font-display-family);
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #F5F0E8;
-  margin: 0 0 8px 0;
+  margin: 0 0 10px 0;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .nf-value-props__desc {
   font-family: var(--font-body-family);
-  font-size: 1.05rem;
-  color: rgba(245, 240, 232, 0.82);
+  font-size: 1.15rem;
+  color: rgba(245, 240, 232, 0.85);
   margin: 0;
   line-height: 1.65;
   font-weight: 300;
