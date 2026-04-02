@@ -432,16 +432,19 @@ body.template-page a.button:hover {
   }
 }
 
-/* Footer sitemap */
-/* Footer sitemap — always on dark charcoal now */
+/* ─── Footer sitemap — centred, collapsible dropdowns on all screen sizes ─── */
 .footer-sitemap {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+  width: 100%;
 }
 
 .footer-sitemap__group {
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  width: 100%;
 }
 
 .footer-sitemap__group:last-child {
@@ -459,6 +462,7 @@ body.template-page a.button:hover {
   opacity: 0.9;
   text-decoration: none;
   transition: opacity 0.2s ease;
+  text-align: center;
 }
 
 .footer-sitemap__top-link:hover {
@@ -468,7 +472,7 @@ body.template-page a.button:hover {
 .footer-sitemap__summary {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   cursor: pointer;
   list-style: none;
   padding: 2px 0;
@@ -491,11 +495,13 @@ details.footer-sitemap__group--collapsible[open] .footer-sitemap__caret {
 }
 
 .footer-sitemap__children {
-  padding: 4px 0 10px 12px;
+  padding: 4px 0 10px 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2px;
   margin: 0;
+  list-style: none;
 }
 
 .footer-sitemap__child-link {
@@ -505,6 +511,7 @@ details.footer-sitemap__group--collapsible[open] .footer-sitemap__caret {
   text-decoration: none;
   padding: 4px 0;
   display: block;
+  text-align: center;
   transition: opacity 0.2s ease;
 }
 
@@ -512,22 +519,43 @@ details.footer-sitemap__group--collapsible[open] .footer-sitemap__caret {
   opacity: 1;
 }
 
-/* On desktop open all groups by default */
+/* Desktop: horizontal row of groups, each a centred column with working dropdown */
 @media screen and (min-width: 750px) {
+  .footer-sitemap {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .footer-sitemap__group {
+    border-bottom: none;
+    width: auto;
+    min-width: 110px;
+  }
+
+  /* Carets visible and interactive on desktop */
   .footer-sitemap__caret {
-    display: none;
+    display: inline-block;
   }
+
   .footer-sitemap__summary {
-    cursor: default;
-    pointer-events: none;
+    cursor: pointer;
+    pointer-events: auto;
   }
-  /* Re-enable clicks on anchor links inside the summary (e.g. Catalogue link) */
+
   .footer-sitemap__summary a {
     pointer-events: auto !important;
     cursor: pointer !important;
   }
-  /* Force open on desktop via CSS since we can't set open attr via CSS */
+
+  /* Dropdown: closed by default, opened by <details open> */
   details.footer-sitemap__group--collapsible > .footer-sitemap__children {
+    display: none;
+  }
+
+  details.footer-sitemap__group--collapsible[open] > .footer-sitemap__children {
     display: flex !important;
   }
 }
@@ -1026,4 +1054,22 @@ body.template-product .share-button__copy-link input {
 body .shopify-section.announcement-bar-section {
   background-color: #1A1F2A !important;
   background-image: none !important;
+}
+
+/* ─── Announcement bar banding fix ─────────────────────────────────────────
+   On product pages, body.template-product .page-width forces #242833 on ALL
+   .page-width elements — including the one inside the utility-bar. This creates
+   a visible band (352px each side) lighter than the surrounding #1A1F2A.
+   Specificity: (0,3,1) beats (0,2,1) so this wins without !important tricks. */
+body.template-product .utility-bar .page-width,
+body.template-product .announcement-bar-section .page-width {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* ─── Product page — Add to Cart button: larger, more prominent text ─── */
+body.template-product .product-form__submit {
+  font-size: 1.1rem !important;
+  letter-spacing: 0.06em !important;
+  min-height: 52px !important;
 }
