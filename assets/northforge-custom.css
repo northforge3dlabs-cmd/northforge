@@ -267,12 +267,15 @@ footer, .footer,
   box-shadow: 0 0 0 1px var(--color-primary);
 }
 
-/* ─── Dark background pages: Shop, Contact, About, FAQ ─── */
+/* ─── Dark background pages: Shop, Contact, About, FAQ, Policies ─── */
 
-/* Body background for all page and collection templates */
+/* Body background for all page, collection, product, and policy templates.
+   Note: Shopify policy pages (privacy, refund, shipping, contact-info) render
+   with body class "template-" (template.name is empty for built-in policy pages). */
 body.template-collection,
 body.template-page,
-body.template-product {
+body.template-product,
+body.template- {
   background-color: #242833 !important;
   background-attachment: scroll !important; /* neutralise Dawn's .gradient fixed-attachment compositing artifact */
 }
@@ -286,9 +289,52 @@ body.template-page .page-width--narrow,
 body.template-product .section,
 body.template-product section,
 body.template-product .shopify-section,
-body.template-product .page-width {
+body.template-product .page-width,
+body.template- .section,
+body.template- section,
+body.template- .shopify-section,
+body.template- .page-width,
+body.template- .page-width--narrow {
   background-color: #242833 !important;
   color: #F5F0E8 !important;
+}
+
+/* ─── Policy pages — Shopify-specific content wrappers ─────────────────────
+   Built-in policy pages use .shopify-policy__container / __title instead of
+   the usual .page-width content structure. */
+body.template- .shopify-policy__container {
+  background-color: #242833 !important;
+  color: #F5F0E8 !important;
+}
+
+body.template- .shopify-policy__title h1,
+body.template- .shopify-policy__title {
+  color: #F5F0E8 !important;
+  font-family: var(--font-display-family);
+}
+
+body.template- .rte,
+body.template- .rte p,
+body.template- .rte li,
+body.template- .rte strong,
+body.template- .rte td,
+body.template- .rte th {
+  color: #F5F0E8 !important;
+}
+
+body.template- .rte h1,
+body.template- .rte h2,
+body.template- .rte h3,
+body.template- .rte h4 {
+  color: var(--color-accent) !important;
+}
+
+body.template- .rte a {
+  color: var(--color-accent);
+}
+
+body.template- .rte a:hover {
+  color: #F5F0E8;
 }
 
 /* Product page — headings, prices and labels readable on dark background */
@@ -1078,7 +1124,9 @@ body.template-product .announcement-bar-section .page-width,
 body.template-page .utility-bar .page-width,
 body.template-page .announcement-bar-section .page-width,
 body.template-collection .utility-bar .page-width,
-body.template-collection .announcement-bar-section .page-width {
+body.template-collection .announcement-bar-section .page-width,
+body.template- .utility-bar .page-width,
+body.template- .announcement-bar-section .page-width {
   background-color: transparent !important;
   background-image: none !important;
 }
