@@ -950,11 +950,15 @@ body.template-page [type="submit"] {
 }
 
 /* ─── Product page — "You may also like" dark background override ─── */
-/* colour-scheme-1 (off-white) and colour-scheme-2 (warm-grey) must stay dark on product pages */
+/* colour-scheme-1 (off-white) and colour-scheme-2 (warm-grey) must stay dark on product pages.
+   Also override the --gradient-background CSS variable so Dawn's .gradient class
+   doesn't re-apply the light colour via background: var(--gradient-background). */
 body.template-product .color-scheme-1,
 body.template-product .color-scheme-2 {
+  --gradient-background: #242833 !important;
+  --color-background: 36, 40, 51 !important;
   background-color: #242833 !important;
-  background-image: linear-gradient(#242833, #242833) !important;
+  background-image: none !important;
   color: #F5F0E8 !important;
 }
 
@@ -972,4 +976,45 @@ body.template-product .color-scheme-2 .price,
 body.template-product .color-scheme-1 .price__regular,
 body.template-product .color-scheme-2 .price__regular {
   color: #F5F0E8 !important;
+}
+
+/* ─── Product page — lead-time notice box: dark bg + readable text ─── */
+/* .lead-time-notice is off-white (#EDE8DF) on product pages; text becomes invisible */
+body.template-product .lead-time-notice {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-left-color: var(--color-accent) !important;
+  color: #F5F0E8 !important;
+}
+
+/* ─── Product page — Add to Cart: match accent gold used on rest of site ─── */
+body.template-product .product-form__submit {
+  background-color: var(--color-accent) !important;
+  color: #1A0F00 !important;
+  border-color: var(--color-accent) !important;
+}
+
+body.template-product .product-form__submit:hover {
+  background-color: var(--color-accent-hover) !important;
+  border-color: var(--color-accent-hover) !important;
+}
+
+/* ─── Product page — Share button: force light colour on dark background ─── */
+/* product-info carries color-scheme-1 which sets --color-foreground: 18,18,18 (near-black).
+   Share button inherits this and becomes invisible against the dark bg. */
+body.template-product share-button button,
+body.template-product .share-button__button {
+  color: #F5F0E8 !important;
+}
+
+body.template-product share-button details summary,
+body.template-product .share-button__fallback {
+  color: #F5F0E8 !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.template-product share-button details summary input,
+body.template-product .share-button__copy-link input {
+  color: #F5F0E8 !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
 }
