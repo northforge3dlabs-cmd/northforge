@@ -147,45 +147,69 @@ p {
   font-weight: 700;
 }
 
-/* Header */
-.header-wrapper, .header {
-  background-color: var(--color-background);
-  border-bottom: 1px solid var(--color-border);
+/* Header — always solid, never transparent over hero */
+.header-wrapper,
+.header-wrapper.header-wrapper--border-bottom,
+.shopify-section-header-sticky .header-wrapper,
+sticky-header .header-wrapper {
+  background-color: #F5F0E8 !important;
+  background-image: linear-gradient(#F5F0E8, #F5F0E8) !important;
+  border-bottom: 1px solid var(--color-border) !important;
 }
 
-/* Announcement bar */
+/* Announcement bar — target the outer utility-bar for full-width coverage */
+.utility-bar {
+  background-color: var(--color-primary) !important;
+  background-image: none !important;
+}
+
 .announcement-bar {
   background-color: var(--color-primary);
-  color: var(--color-background);
+  color: #F5F0E8;
 }
 
-.announcement-bar a {
-  color: var(--color-background);
+.announcement-bar a,
+.utility-bar a {
+  color: #F5F0E8;
 }
 
-.announcement-bar__message {
-  font-size: max(0.8rem, 1vw); /* Mobile responsive font size */
+.announcement-bar__message,
+.utility-bar p,
+.utility-bar span {
+  color: #F5F0E8 !important;
+  font-size: max(0.85rem, 1vw);
 }
 
-/* Footer */
-footer, .footer {
-  background-color: var(--color-primary);
-  color: var(--color-background);
+/* Footer — dark charcoal for gaming-store cohesion */
+footer, .footer,
+.footer-group .footer,
+.shopify-section-group-footer-group footer {
+  background-color: #242833 !important;
+  background-image: linear-gradient(#242833, #242833) !important;
+  color: #F5F0E8 !important;
 }
 
-.footer__list-item a, .footer-block__details-content a {
-  color: var(--color-background);
+.footer__list-item a,
+.footer-block__details-content a,
+.footer__heading,
+.footer-block__heading,
+.footer p, .footer span, .footer li,
+.footer-block p {
+  color: #F5F0E8 !important;
   opacity: 0.85;
 }
 
-.footer__list-item a:hover, .footer-block__details-content a:hover {
+.footer__list-item a:hover,
+.footer-block__details-content a:hover {
   opacity: 1;
-  color: var(--color-background);
+  color: #F5F0E8 !important;
 }
 
-.footer-block__heading {
-  color: var(--color-background);
+.footer-block__heading,
+.footer__heading {
+  color: #F5F0E8 !important;
   font-family: var(--font-heading-family);
+  opacity: 1;
 }
 
 /* Lead time notice box */
@@ -255,6 +279,7 @@ footer, .footer {
 }
 
 /* Footer sitemap */
+/* Footer sitemap — always on dark charcoal now */
 .footer-sitemap {
   display: flex;
   flex-direction: column;
@@ -262,7 +287,7 @@ footer, .footer {
 }
 
 .footer-sitemap__group {
-  border-bottom: 1px solid rgba(245, 240, 232, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .footer-sitemap__group:last-child {
@@ -497,6 +522,15 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
   margin-bottom: 0.4rem;
 }
 
+/* Center-justify the product grid so 2 cards sit centred in a 3-col layout */
+.featured-collection .product-grid {
+  justify-content: center;
+}
+
+.featured-collection .title-wrapper {
+  text-align: center;
+}
+
 .collection__description.subtitle {
   font-family: var(--font-body-family);
   font-size: 1rem;
@@ -621,19 +655,19 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
 /* ─── Made to Order card label ─── */
 .card__made-to-order {
   display: block;
-  font-size: 0.72rem !important;
-  font-weight: 600 !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-primary) !important;
-  margin-top: 6px;
-  opacity: 0.85;
+  color: var(--color-accent) !important;
+  margin-top: 8px;
+  opacity: 1;
 }
 
 /* ─── Value proposition strip ─── */
 .nf-value-props {
   background-color: var(--color-primary);
-  padding: 32px 0;
+  padding: 44px 0;
 }
 
 .nf-value-props__inner {
@@ -652,7 +686,7 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 8px 28px;
+  padding: 8px 32px;
   position: relative;
 }
 
@@ -667,37 +701,37 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
 }
 
 .nf-value-props__icon {
-  font-size: 1.6rem;
-  margin-bottom: 8px;
+  font-size: 2.6rem;
+  margin-bottom: 14px;
   line-height: 1;
 }
 
 .nf-value-props__title {
   font-family: var(--font-display-family);
-  font-size: 0.78rem;
+  font-size: 1.0rem;
   font-weight: 700;
   color: #F5F0E8;
-  margin: 0 0 4px 0;
-  letter-spacing: 0.1em;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .nf-value-props__desc {
   font-family: var(--font-body-family);
-  font-size: 0.78rem;
-  color: rgba(245, 240, 232, 0.72);
+  font-size: 0.9rem;
+  color: rgba(245, 240, 232, 0.78);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
   font-weight: 300;
 }
 
 @media screen and (max-width: 749px) {
   .nf-value-props {
-    padding: 24px 0;
+    padding: 32px 0;
   }
   .nf-value-props__inner {
     flex-direction: column;
-    gap: 20px;
+    gap: 28px;
     align-items: center;
   }
   .nf-value-props__item + .nf-value-props__item::before {
@@ -706,6 +740,6 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
   .nf-value-props__item {
     padding: 0 16px;
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
   }
 }
