@@ -821,3 +821,37 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
     max-width: 300px;
   }
 }
+
+
+/* --- Dark-page FAQ & button overrides --- */
+
+body.template-page .faq-item summary.faq-question {
+    color: #F5F0E8 !important;
+}
+
+body.template-page .faq-item summary.faq-question::before {
+    border-right-color: #C4922A !important;
+      border-bottom-color: #C4922A !important;
+}
+
+body.template-page .faq-item summary.faq-question:hover {
+    color: #C4922A !important;
+}
+
+body.template-page .faq-item {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+body.template-page .page-title,
+body.template-page .main-page-title {
+    font-variant: normal !important;
+}
+
+body.template-page .rte a[style*="background-color"] {
+    background-color: #C4922A !important;
+      color: #1A0F00 !important;
+}
+
+body.template-page .rte a[style*="background-color"]:hover {
+    background-color: #A87820 !important;
+}
