@@ -310,6 +310,16 @@ body.template-product .variant-input-wrap label {
   color: #F5F0E8 !important;
 }
 
+/* Product page — force dark bg on media containers and product-info element
+   (these carry a 'gradient' class that applies a light colour-scheme background) */
+body.template-product product-info,
+body.template-product .product-media-container,
+body.template-product .global-media-settings,
+body.template-product .product__media-wrapper {
+  background-color: #242833 !important;
+  background-image: linear-gradient(#242833, #242833) !important;
+}
+
 /* Page title */
 body.template-page .main-page-title,
 body.template-page .page-title {
@@ -734,7 +744,7 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
   margin-right: 2px;
 }
 
-.faq-item[open] summary.faq-question::before {
+.faq-item.is-open summary.faq-question::before {
   transform: rotate(45deg);
 }
 

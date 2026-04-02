@@ -375,4 +375,18 @@
     {%- endif -%}
 
     {%- if settings.cart_type == 'drawer' -%}
-      <script src="{{ 'cart-drawer.js' | asset_url }}
+      <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <script>
+      /* FAQ accordion — toggle .is-open class for CSS arrow state */
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.faq-item').forEach(function (item) {
+          item.addEventListener('toggle', function () {
+            item.classList.toggle('is-open', item.open);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
