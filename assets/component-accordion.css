@@ -14,6 +14,11 @@
   height: calc(var(--font-heading-scale) * 0.6rem);
 }
 
+.accordion summary .icon-caret {
+  transform: rotate(-90deg);
+  transition: transform 0.2s ease;
+}
+
 .accordion + .accordion {
   margin-top: 0;
   border-top: none;
@@ -43,7 +48,7 @@
 }
 
 .accordion details[open] > summary .icon-caret {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 
 .accordion__content {
