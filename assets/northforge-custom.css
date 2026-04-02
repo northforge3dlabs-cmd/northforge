@@ -151,7 +151,7 @@ p {
 .header__heading img,
 .header__heading-logo,
 .header__logo img {
-  mix-blend-mode: screen;
+  mix-blend-mode: screen !important;
 }
 
 /* Header — dark charcoal, always solid, never transparent over hero */
@@ -435,15 +435,16 @@ details.footer-sitemap__group--collapsible[open] .footer-sitemap__caret {
 
 /* On desktop open all groups by default */
 @media screen and (min-width: 750px) {
-  details.footer-sitemap__group--collapsible {
-    open: true;
-  }
   .footer-sitemap__caret {
     display: none;
   }
   .footer-sitemap__summary {
     cursor: default;
     pointer-events: none;
+  }
+  .footer-sitemap__summary a {
+    pointer-events: auto !important;
+    cursor: pointer !important;
   }
   /* Force open on desktop via CSS since we can't set open attr via CSS */
   details.footer-sitemap__group--collapsible > .footer-sitemap__children {
