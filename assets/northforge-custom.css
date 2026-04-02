@@ -265,20 +265,34 @@ body.template-page {
   background-color: #242833 !important;
 }
 
-/* Page title and body copy on dark background (main-page section has no color_scheme) */
+/* Force all sections and content wrappers dark on these templates */
+body.template-page .section,
+body.template-page section,
+body.template-page .shopify-section,
+body.template-page .page-width,
+body.template-page .page-width--narrow {
+  background-color: #242833 !important;
+  color: #F5F0E8 !important;
+}
+
+/* Page title */
 body.template-page .main-page-title,
 body.template-page .page-title {
   color: #F5F0E8 !important;
   font-family: var(--font-display-family);
 }
 
+/* Rich text body copy */
 body.template-page .rte,
 body.template-page .rte p,
 body.template-page .rte li,
-body.template-page .rte strong {
+body.template-page .rte strong,
+body.template-page .rte td,
+body.template-page .rte th {
   color: #F5F0E8 !important;
 }
 
+/* Rich text headings in amber */
 body.template-page .rte h1,
 body.template-page .rte h2,
 body.template-page .rte h3,
@@ -294,10 +308,21 @@ body.template-page .rte a:hover {
   color: #F5F0E8;
 }
 
-/* Wrap the main-page section in dark charcoal */
-body.template-page .section,
-body.template-contact .section {
-  background-color: #242833;
+/* Lozenge / pill buttons inside page content */
+body.template-page .button,
+body.template-page .btn,
+body.template-page a.button,
+body.template-page .rte a.button,
+body.template-page .rte .button {
+  background-color: var(--color-accent) !important;
+  color: #1A0F00 !important;
+  border-color: var(--color-accent) !important;
+}
+
+body.template-page .button:hover,
+body.template-page a.button:hover {
+  background-color: var(--color-accent-hover) !important;
+  color: #1A0F00 !important;
 }
 
 /* Collection page */
