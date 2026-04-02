@@ -274,6 +274,7 @@ body.template-collection,
 body.template-page,
 body.template-product {
   background-color: #242833 !important;
+  background-attachment: scroll !important; /* neutralise Dawn's .gradient fixed-attachment compositing artifact */
 }
 
 /* Force all sections and content wrappers dark on these templates */
@@ -1074,4 +1075,13 @@ body.template-product .product-form__submit {
   font-size: 1.6rem !important;
   letter-spacing: 0.06em !important;
   min-height: 54px !important;
+}
+
+/* ─── Announcement bar — belt-and-braces scroll fix ────────────────────────
+   Ensures the utility-bar and its section wrapper are never pulled into a
+   fixed-attachment compositing layer on any template. */
+.utility-bar,
+.utility-bar.gradient,
+.announcement-bar-section {
+  background-attachment: scroll !important;
 }
