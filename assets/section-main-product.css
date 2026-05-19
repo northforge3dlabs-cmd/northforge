@@ -673,6 +673,20 @@ a.product__text {
   display: block;
   height: auto;
   margin: auto;
+  max-width: 100%;
+}
+
+/* Mobile (<750px): constrain modal media so it never overflows the viewport.
+   Without these, <img> elements emitted with width="1100" overflow the
+   393px iPhone modal container (overflow:auto), producing extreme apparent
+   zoom + scrollbars. The width:100% block at min-width:750px below handles
+   desktop. See MOBILE_AUDIT_2026-05-19.md. */
+.product-media-modal__content img,
+.product-media-modal__content video,
+.product-media-modal__content model-viewer,
+.product-media-modal__content iframe {
+  max-width: 100%;
+  height: auto;
 }
 
 .product-media-modal__content .media {

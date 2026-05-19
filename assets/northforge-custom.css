@@ -117,9 +117,31 @@ p {
   background: rgba(46, 35, 24, 0.06);
 }
 
-/* Card content area */
+/* Card content area — flex column so price/badge can be pushed to bottom */
 .product-card-wrapper .card__content {
   padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Title — clamp to a fixed line count so adjacent cards on the same
+   slider row keep their prices aligned regardless of title length. */
+.product-card-wrapper .card__heading {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
+  min-height: 4.2em;
+}
+
+/* Push price + made-to-order line to the bottom of each card so they
+   align horizontally even when titles wrap differently. */
+.product-card-wrapper .price,
+.product-card-wrapper .card__made-to-order,
+.product-card-wrapper .card-information {
+  margin-top: auto;
 }
 
 /* Title hover color */
@@ -194,7 +216,8 @@ sticky-header .header-wrapper {
 .utility-bar p,
 .utility-bar span {
   color: #F5F0E8 !important;
-  font-size: max(0.85rem, 1vw);
+  /* 1.2rem = 12px floor (Dawn root is 62.5%) — keeps readable on narrow phones. */
+  font-size: max(1.2rem, 1vw);
 }
 
 /* Footer — dark charcoal for gaming-store cohesion */
