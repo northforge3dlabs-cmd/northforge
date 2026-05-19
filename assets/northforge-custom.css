@@ -487,8 +487,12 @@ body.template-page a.button:hover {
   font-family: var(--font-heading-family);
 }
 
-/* Mobile responsive card grid handling */
-@media screen and (max-width: 989px) {
+/* Tablet (750–989px) 2-col layout for sections that opt in via .grid--2-col-tablet
+   (featured-product, featured-collection, collapsible-content, main-product).
+   IMPORTANT: bounded to tablet only — at mobile (<750px) Dawn's default
+   .grid--1-col .grid__item { width: 100% } must win, otherwise the product page
+   and other multi-section grids render side-by-side instead of stacking. */
+@media screen and (min-width: 750px) and (max-width: 989px) {
   .grid--2-col-tablet .grid__item {
     width: calc(50% - 12px);
     max-width: calc(50% - 12px);
