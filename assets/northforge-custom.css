@@ -781,6 +781,14 @@ input:checked + label[data-color-value="blue"]  { box-shadow: 0 0 0 2px #fff, 0 
   justify-content: center;
 }
 
+/* Same treatment on the main collection page (Shop) — with only 3 products
+   in a 4-column desktop grid (or partial rows on mobile/tablet), default
+   flex-start leaves cards clumped on the left with a big empty right column.
+   Targets the collection-page grid by its #product-grid ID (Dawn convention). */
+#product-grid.product-grid {
+  justify-content: center;
+}
+
 .featured-collection .title-wrapper {
   text-align: center;
 }
