@@ -17,14 +17,16 @@
     <p style="text-align: center; opacity: 0.85; margin-bottom: 32px;">{{ section.settings.intro }}</p>
 
     {%- if form.posted_successfully? -%}
-      <div style="background: rgba(120,200,120,0.12); border: 1px solid rgba(120,200,120,0.4); border-radius: 6px; padding: 20px; text-align: center; margin-bottom: 24px;">
-        <strong>Thanks — we got your request!</strong><br>
-        We'll review your details and get back to you within 24–48 hours.
-        Don't forget to drop your files below if you haven't yet.
+      <div id="nf-success" style="background: rgba(120,200,120,0.12); border: 1px solid rgba(120,200,120,0.4); border-radius: 6px; padding: 20px; text-align: center; margin-bottom: 24px;">
+        <strong>Thanks — your request has been received!</strong><br>
+        We'll review your details and get back to you within 24–48 hours with a quote.
+        If you haven't dropped your files below yet, you can still do that now.
       </div>
+      <script>document.getElementById('nf-success')&&document.getElementById('nf-success').scrollIntoView({behavior:'smooth',block:'center'});</script>
     {%- endif -%}
 
     {%- form 'contact', id: 'custom-order-form' -%}
+      <input type="hidden" name="return_to" value="{{ request.path }}">
       {%- if form.errors -%}
         <div style="background: rgba(220,90,90,0.12); border: 1px solid rgba(220,90,90,0.4); border-radius: 6px; padding: 16px; margin-bottom: 20px;">
           Please check the highlighted fields: {{ form.errors | default_errors }}
